@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSC196v Project</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	
+		<script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.7.3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.0.0-beta.11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.0.0"></script>
+	<script src="https://d3js.org/d3.v4.js"></script>
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6f7255bb46ed477f8218e856bb0bcb08 {
+                    position: relative;
+                    width: 50.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+
+    <style media="screen">
+        /* Add space between Vega-Embed links  */
+        .vega-actions a {
+            margin-right: 5px;
+        }
+    </style>
+	
+	<style>
+	html {
+	  scroll-behavior: smooth;
+	}
+	
+	#section0 {
+	  height: 875px;
+	}
+
+	#section1 {
+	  height: 875px;
+	}
+
+	#section2 {
+	  height: 895px;
+	}
+	
+	#section3 {
+	  height: 885px;
+	}
+	
+	#section4 {
+	  height: 905px;
+	}
+	
+	#section5 {
+	  height: 875px;
+	}
+	
+	#section6 {
+	  height: 895px;
+	}
+	</style>
+</head>
+
+<body>
+
+<!-- divs -->
+
+<div class="main" id="section0">
+  <h1 align="center" style="font-family: verdana; font-size: 4.8em;">CSC 196V Final Project: Homicides in Boston</h1>
+  <h2 align="center" style="font-family: verdana; font-size: 2.8em;">By: Roberto Campos & Jonathan Ruidera</h2>
+  <p style="font-family: verdana; text-align: center; font-weight: 400;"><font size="5"><br>Data Used: https://www.kaggle.com/AnalyzeBoston/crimes-in-boston <br><br><br>It’s easy to not pay attention of your surroundings, which decrease your awareness and increases the risk of getting into trouble.  The data set we explored contained various crimes, but in the end many crimes lead to homicides. We took the chance to explore the year, month, day, hours, and locations that had the most homicides. In the following graphs, one can observe and view the answers to these questions. We also encourage to seek your own interpretations and analyze other data sets to compare the findings and see the accuracy of our results. The hope of this analysis to give the reader a better understanding and awareness of which times are the most dangerous to walk around Boston. The dataset contains data collected from July of 2015 to August of 2018.<br></font></p>
+  <div align="center">
+  <a href="#section1" style="align: center;"><font size="7"><br>Begin Narrative</font></a>
+  </div>
+</div>
+
+<div class="main" id="section1">
+  <img src="hourBarData.png" align="left" style="height: 100%; width: 60%; object-fit: contain"/>
+  <p style="font-family:verdana; text-align: justify; font-weight: 400;"><font size="5"><br><br><br><br><br><br><br><br><br>The most popular time for homicides to occur is 10 p.m. followed by 12 a.m. The least likely hour in which a homicide can occur seems to be around 7 a.m. Seems like night time increases the potential for crimes such as robbery and assault to happen, which in return increases murders. But, there can be other factors such as the use of drugs at night time.</font></p>
+  <a href="#section2"><font size="7">&#8595</font></a>
+</div>
+
+<div class="main" id="section2">
+  <img src="whichDay.png" align="right" style="height: 90%; width: 60%; object-fit: contain"/>
+  <p style="font-family:verdana; text-align: justify; font-weight: 400;"><font size="5"><br><br><br><br>Most homicides tend to happen on Saturday with 33 homicides followed by Tuesday with 29 homicides. Surprisingly, Fridays have the second least Homicides of all the days. Monday only has 11 homicides out of all the years. There is no information on why those days have the most homicides, but one can speculate the reason as to why those day are the days with the most homicides. Tuesday and Wednesday are almost mid-week. After resting Monday from all the activities on Saturday and Sunday, Tuesday may seem like a great day to confront problems. Wednesday is right in the middle of the week which may cause thing to get tense. Friday is typically payday. Giving someone a reason to ask for owed money the next day on Saturday, and not paying causing conflict to escalate which may give someone a reason to put a bullet in your head.</font></p>
+  <a href="#section3"><font size="7">&#8595</font></a>
+</div>
+
+<div class="main" id="section3">
+  <div id="vis" style="float: left;"></div>
+  <div style="overflow: hidden;">
+    <p style="font-family:verdana; text-align: justify; font-weight: 400;"><font size="5"><br><br><br><br><br><br><br><br><br><br><br>July is a very active month for homicides in Boston. Between 2015 to 2018, July has totaled 22 homicides. In 2016 there was only 1 homicide, the year before in 2015 there was 8 homicides and the year after in 2017 there was 7 homicides. What happened in July 2016? Why is July a popular month to commit such crime?</font></p>
+    <a href="#section4"><font size="7">&#8595</font></a> 
+  </div>
+</div>
+
+<div class="main" id="section4">
+  <div id="my_dataviz" style="float: right;"></div>
+  <div align="left">
+    <p style="font-family:verdana; text-align: justify; font-weight: 400;"><font size="5"><br><br><br><br><br><br><br><br><br>July is the peak of summer. The rise in temperature influences individuals to leave their homes and roam outside engaging in summer activities such as drinking at a neighborhood cook out on July 4th. Day light hours increase as well, elongating the day for more potential fun activities. One of the biggest factors may be that students are on summer vacation. But, why did July 2016 only have one homicide? Could it have been the release of Pokémon Go or Stranger Things that may have caused people to be entertained in July 2016?</font></p>
+	<a href="#section5"><font size="7">&#8595</font></a> 
+  </div>
+</div>
+
+<div class="main" id="section5">
+  <div class="folium-map" id="map_6f7255bb46ed477f8218e856bb0bcb08" style="float: left;"></div>
+  <div style="overflow: hidden;">
+	<p style="font-family:verdana; text-align: justify; font-weight: 400;"><font size="5"><br><br><br><br><br><br><br><br><br>Roxbury, Dorchester, and Mattapan seem to be the areas with the most homicides. According to cityofboston.gov these are demographics for Roxbury in 2010: White – 6.6%, Black or African American – 55.6%, Hispanic or Latino – 29.8%. The median annual income is $30,654 and over half the population is ages 25-64. Demographics can play a big part in why homicide rates are higher in those areas.</font></p>
+	<a href="#section6"><font size="7">&#8595</font></a>
+  </div>
+</div>
+
+<div class="main" id="section6">
+  <h3 align="center" style="font-family: verdana; font-size: 5em;">Summary</h3>
+  <p style="font-family: verdana; font-weight: 400;"><font size="5"><br><br>Roxbury and Dorchester are dangerous areas, which increases in the summer time as it can be seen in the previous visualizations. The days with the most homicides in total are weekends and typically most homicides happen between 10 p.m. an 12 a.m. in the morning. So, decrease your chances of getting into trouble and keep those times in mind when you’re in Boston. There can be other correlations between homicides and other types of crimes such as drug incidents, robbery, prostitution, etc. The data used also contained weapon reports which in return can tell us which weapons were most likely used to cause the homicides. The data can potentially help cops and other protection services allocate their services at the particular days and times in which surveillance is truly needed. Keep in mind that data changes as factors change or events take place. If changes are made such as increasing surveillance at such days and hours, in the next years data, the results will be able to be seen and adjustments can be made. Although crime will always happen no matter how much adjustments are made, data informed decisions can better help situations such as the example mentioned above.</font></p>
+</div>
+
+<!-- divs -->
+
+<!-- scripts -->
+
+<script>
+    // Assign the specification to a local variable vlSpec.
+    var vlSpec = {
+        $schema: 'https://vega.github.io/schema/vega-lite/v4.json',
+        "width": 700,
+        "height": 830,
+        "data": {
+            "values": [
+                {"Year": "2018", "Day": "Mon", "Total": "0"}, {"Year": "2018", "Day": "Tue", "Total": "8"}, {"Year": "2018", "Day": "Wed", "Total": "5"},
+                {"Year": "2018", "Day": "Thu", "Total": "5"},{"Year": "2018", "Day": "Fri", "Total": "4"},{"Year": "2018", "Day": "Sat", "Total": "8"},
+                {"Year": "2018", "Day": "Sun", "Total": "3"},
+                {"Year": "2017", "Day": "Mon", "Total": "8"}, {"Year": "2017", "Day": "Tue", "Total": "10"}, {"Year": "2017", "Day": "Wed", "Total": "7"},
+                {"Year": "2017", "Day": "Thu", "Total": "5"},{"Year": "2017", "Day": "Fri", "Total": "7"},{"Year": "2017", "Day": "Sat", "Total": "5"},
+                {"Year": "2017", "Day": "Sun", "Total": "12"},
+                {"Year": "2016", "Day": "Mon", "Total": "2"}, {"Year": "2016", "Day": "Tue", "Total": "7"}, {"Year": "2016", "Day": "Wed", "Total": "8"},
+                {"Year": "2016", "Day": "Thu", "Total": "6"},{"Year": "2016", "Day": "Fri", "Total": "2"},{"Year": "2016", "Day": "Sat", "Total": "15"},
+                {"Year": "2016", "Day": "Sun", "Total": "7"},
+                {"Year": "2015", "Day": "Mon", "Total": "1"}, {"Year": "2015", "Day": "Tue", "Total": "4"}, {"Year": "2015", "Day": "Wed", "Total": "8"},
+                {"Year": "2015", "Day": "Thu", "Total": "6"},{"Year": "2015", "Day": "Fri", "Total": "2"},{"Year": "2015", "Day": "Sat", "Total": "6"},
+                {"Year": "2015", "Day": "Sun", "Total": "1"}
+            ]
+        },
+        selection: {"pts": {"type": "single", "on": "click"}},
+        mark: {
+            type:'bar',
+            color: 'red'
+        } ,
+        encoding: {
+            y: {field: 'Year', type: 'nominal'},
+            x: {
+
+                field: 'Day',
+                type: 'ordinal',
+                sort: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+                axis: {
+                    title: 'Day'
+                },
+            },
+            tooltip: {field: "Total", "type": "nominal"},
+            color: {
+                "condition": {
+                    selection: "pts",
+                    field: 'Total',
+                    type: "quantitative",
+                    scale: {scheme: 'reds'}
+                },
+                value:'grey'
+            }
+        }
+    };
+    vegaEmbed('#vis', vlSpec);
+</script>
+
+<script>
+
+// set the dimensions and margins of the graph
+var margin = {top: 20, right: 30, bottom: 0, left: 15},
+    width = 800 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg = d3.select("#my_dataviz")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// Parse the Data
+d3.csv("https://raw.githubusercontent.com/jru-id/data/master/homicidesPerMonth.csv", function(data) {
+
+  // List of groups = header of the csv files
+  var keys = data.columns.slice(1)
+
+  // Add X axis
+  var x = d3.scaleLinear()
+    .domain([1,12])
+    .range([ 0, width ]);
+  svg.append("g")
+    .attr("transform", "translate(0," + height*0.8 + ")")
+    .call(d3.axisBottom(x).tickSize(-height*.7).tickValues([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]))
+    .select(".domain").remove()
+  // Customization
+  svg.selectAll(".tick line").attr("stroke", "#b8b8b8")
+
+  // Add X axis label:
+  svg.append("text")
+      .attr("text-anchor", "end")
+      .attr("x", width)
+      .attr("y", height-30 )
+      .text("Month");
+
+  // Add Y axis
+  var y = d3.scaleLinear()
+    .domain([-20, 16])
+    .range([ height, 0 ]);
+  svg.append("g")
+    .attr("transform", "translate(1," + height*0.389 + ")")
+	.call(d3.axisLeft(y).tickSize(0).tickValues([2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26]))
+	.select(".domain").remove()
+
+  // color palette
+  var color = d3.scaleOrdinal()
+    .domain(keys)
+    .range(d3.schemeDark2);
+
+  //stack the data?
+  var stackedData = d3.stack()
+    .offset(d3.stackOffsetSilhouette)
+    .keys(keys)
+    (data)
+
+  // create a tooltip
+  var Tooltip = svg
+    .append("text")
+    .attr("x", 0)
+    .attr("y", 0)
+    .style("opacity", 0)
+    .style("font-size", 17)
+
+  // Three function that change the tooltip when user hover / move / leave a cell
+  var mouseover = function(d) {
+    Tooltip.style("opacity", 1)
+    d3.selectAll(".myArea").style("opacity", .2)
+    d3.select(this)
+      .style("stroke", "black")
+      .style("opacity", 1)
+  }
+  var mousemove = function(d,i) {
+    grp = keys[i]
+    Tooltip.text(grp)
+  }
+  var mouseleave = function(d) {
+    Tooltip.style("opacity", 0)
+    d3.selectAll(".myArea").style("opacity", 1).style("stroke", "none")
+   }
+   
+  // Area generator
+  var area = d3.area()
+    .x(function(d) { return x(d.data.month); })
+    .y0(function(d) { return y(d[0]); })
+    .y1(function(d) { return y(d[1]); })
+
+  // Show the areas
+  svg
+    .selectAll("mylayers")
+    .data(stackedData)
+    .enter()
+    .append("path")
+      .attr("class", "myArea")
+      .style("fill", function(d) { return color(d.key); })
+      .attr("d", area)
+      .on("mouseover", mouseover)
+      .on("mousemove", mousemove)
+      .on("mouseleave", mouseleave)
+
+})
+</script>
+
+<script>    
+    
+            var map_6f7255bb46ed477f8218e856bb0bcb08 = L.map(
+                "map_6f7255bb46ed477f8218e856bb0bcb08",
+                {
+                    center: [42.36, -71.05],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_84c807105479414aba9e1f8d77559ba4 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_6f7255bb46ed477f8218e856bb0bcb08);
+        
+    
+            var marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62 = L.markerClusterGroup(
+                {}
+            );
+            map_6f7255bb46ed477f8218e856bb0bcb08.addLayer(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_eb17d5d0d1d8495da4f19197807eb013 = L.marker(
+                [42.31568920000001, -71.08951391],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_8774afd31cd840bdaff34ae12675e72e = L.marker(
+                [42.28414025, -71.09305138],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_2cb23e5f8b5f4784bac848069945f74d = L.marker(
+                [42.27404039, -71.07630093],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_ef9dae1d0e824d6e8847c8ec05835b81 = L.marker(
+                [42.29505434, -71.08904077],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_10af30e2d8c1410cada0583a0a227d5a = L.marker(
+                [42.28804798, -71.07766654],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_d7bd25b4563749cf8ada14449408cb18 = L.marker(
+                [42.26170286, -71.10221348],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_98d85b4cd5b841f2834971b8fa27167f = L.marker(
+                [42.31242132, -71.09154902],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_578d01a1e2724c319e15bddfb678e97c = L.marker(
+                [42.31841535, -71.07602496],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_c6e73ed921654026bf4e1884c69a3552 = L.marker(
+                [42.31499803, -71.09194485],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_0f161e8f439f44dbbddd27ac3b3e869b = L.marker(
+                [42.351987, -71.16510001],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_989141ce29ae4a9db7327019df35349c = L.marker(
+                [42.29808992, -71.07178667],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_50a0f0891d1d486b87c3c492b1b08a65 = L.marker(
+                [42.38229155, -71.04036424],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_09e664ee25af46e4a3b47a9e915cc02e = L.marker(
+                [42.26681254, -71.09566961],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_0551ec33cf6242f7ba6cfeb946334754 = L.marker(
+                [42.25767476, -71.12367146],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_6c61cab663704838896fbb130b94e57e = L.marker(
+                [42.27934055, -71.09130505],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_0714e8fe853d4a25a7a6fb4ba70b2626 = L.marker(
+                [42.33181879999999, -71.06868237],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_41c796f45a394ea3bc6e44a52d33f29c = L.marker(
+                [42.32283759, -71.10096723],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_129c3512747e477c9ff9157ac479b79e = L.marker(
+                [42.31535276, -71.07304299],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_6f584214df8646588861780570250e6d = L.marker(
+                [42.36474297, -71.06256983],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_3f7bba3f97bd46d8aad0f7b5570059b7 = L.marker(
+                [42.26273505, -71.11078287],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_e068d6176d2243d3b6e8267cb1d9f86c = L.marker(
+                [42.33971096, -71.05321163],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_c1d73dfcaa3545fa915be6cb71319544 = L.marker(
+                [42.28106002, -71.08420647],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_0b25b86635134f0b84771db76f539750 = L.marker(
+                [42.31428744, -71.07697146],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_c194789948994469ae72e5a98949e93c = L.marker(
+                [42.33139985, -71.05128027],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_94d297b083b94a16bf5736a3f5f9ac9e = L.marker(
+                [42.32424069, -71.07761917],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_1fbcccaea9a042e6b2dcd674ed7840e7 = L.marker(
+                [42.30555042, -71.06787929],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_31ca2b2e8f9b49b1b870d5d40d564c18 = L.marker(
+                [42.31250816, -71.06546757],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_16eab1c9c9054631a9e8874b3d69e039 = L.marker(
+                [42.32047753, -71.07273673],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_a617e5e414ca412898ef28260da8bd2f = L.marker(
+                [42.30545103, -71.08057209],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_6ebd824fb504441f8346ee00e3329643 = L.marker(
+                [42.33380238, -71.08880867],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_6ed48687b89f4d9097bfc6e86b70735d = L.marker(
+                [42.28485608, -71.09365749999999],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_355f014fe964400daa7737eb22adb916 = L.marker(
+                [42.27905426, -71.05337772],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_9155a81987c64946b5f0c30784553259 = L.marker(
+                [42.30839354, -71.06473124],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_6fd13887a73442478be73dbef9b65ab9 = L.marker(
+                [42.36671964, -71.03908712],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_4213092d297d4fb590b7d73b38be4626 = L.marker(
+                [42.33178186, -71.09718868],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_7addc2a2ecda4f66b3001c8cc757671d = L.marker(
+                [42.30536545, -71.06812632],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_9d167ba642d24bf5bb3d2dd6e89516f5 = L.marker(
+                [42.27881657, -71.16080623],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_36b14ca4d896484bac06393bfcbeb7de = L.marker(
+                [42.30839354, -71.06473124],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_b7f4ae4e088b417090da85038c6eed3e = L.marker(
+                [42.34243945, -71.0844553],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_6030c7c6f49947f18c562c835c89f6f2 = L.marker(
+                [42.32469443, -71.10087902],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_bfeeeee1edc247429acf01f7588cb5bb = L.marker(
+                [42.32058475, -71.04470305],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_1da12447c1ba4d58b3ad5f483949fc4a = L.marker(
+                [42.32692112, -71.05841861],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_5a40fc215e6343b8b6634ef58c7cecd7 = L.marker(
+                [42.29481426, -71.07200871],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_6c1779b4a99a492087abaf91cf87f50c = L.marker(
+                [42.33168201, -71.06798742],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_36b0388058254a37902cf98c4c6c0413 = L.marker(
+                [42.29813306, -71.08393278],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_61df3d523f41404589d373c50ab98742 = L.marker(
+                [42.29042439, -71.0638074],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_35d2c12b45074d64921747963bbb7893 = L.marker(
+                [42.31396145, -71.06685455],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_4ee890678fa541cb924401d8c1bc3400 = L.marker(
+                [42.3152619, -71.06118848],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_df30c5842a2f471cbfb31cc22fb7626e = L.marker(
+                [42.31009971, -71.0603428],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_064d963af08f4da7abb77f73a7b7e7e5 = L.marker(
+                [42.32320895, -71.08432965],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_d74ead04b701437881b27eac460869c5 = L.marker(
+                [42.34942864, -71.06536641],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_6b276ff447af4fbf801aad647a42e4a4 = L.marker(
+                [42.32734041, -71.07945869],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_f0b8eef069114b9a95611033dd9fa85f = L.marker(
+                [42.32022882, -71.06307063],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_16e77650656f4fc585fc3bd61a2d9e15 = L.marker(
+                [42.30385443, -71.06087585],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_588175f74f804a73becc7c0b78051e3b = L.marker(
+                [42.33308097, -71.10165376],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_162fd1744fb74e95a56d6a270c10fe8c = L.marker(
+                [42.296062799999994, -71.08664795],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_70ea7bda4e6b4a4e959902259468d32f = L.marker(
+                [42.30846634, -71.08327829999999],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_fef92e845bb4409bad0165b9886aef05 = L.marker(
+                [42.32902469, -71.08341505],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_287d14332214401e9d5c1041fd0bfaed = L.marker(
+                [42.30942147, -71.07460029],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_b40859d9e2464fb586cd410264f8b766 = L.marker(
+                [42.31242132, -71.09154902],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_72a726d050db4141881c9a567aeba97b = L.marker(
+                [42.28519774, -71.0677511],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_d8e30375d7e24f01a073eb121aaa10f6 = L.marker(
+                [42.27783207, -71.09355491],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_2f333965e093465491489725ad5c7b39 = L.marker(
+                [42.27607035, -71.0896364],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_f613437d85764c3ea6783c78a0c58c2d = L.marker(
+                [42.28079658, -71.09039724],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_02794ab58d5b434b9e9ce7afb2d96345 = L.marker(
+                [42.34976402, -71.06045076],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_1934d01bf99e440fb4a84616071f0f9e = L.marker(
+                [42.30116811, -71.07347571],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_7668a94f51434d9ebff16faeea3cf8be = L.marker(
+                [42.32019753, -71.06641761],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_d9fb62a5828f4b5d95f310817f5bd7cb = L.marker(
+                [42.34210856, -71.05720719],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_700651d736eb4859bc0ba59b593dcd21 = L.marker(
+                [42.26984836, -71.09532394],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_ee16a31e565c47458b633c1ae0909a86 = L.marker(
+                [42.27374058, -71.0757262],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_7fa951d1f2964fbb9c1e84b8d9aba687 = L.marker(
+                [42.29673351, -71.07618648],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_830d8b690823440b8f2e35ebf3102174 = L.marker(
+                [42.33445761, -71.088061],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_c269cd475797453cbf1d63f1b087c41a = L.marker(
+                [42.28262406, -71.05532964],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_4fe1e1bfc6634d3fa8a1663e3fb44591 = L.marker(
+                [42.33473803, -71.08357423],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_b1c471757a42421d9e53d048a50d4333 = L.marker(
+                [42.33473803, -71.08357423],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_4971cb5b4d1e4f628fa28406313c0d4c = L.marker(
+                [42.3139469, -71.07318374],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_a42b368136e846b9a13dd5f2ba474e2d = L.marker(
+                [42.30584423, -71.06261555],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_567c333e2f8e4ce6a8f07bc17349a609 = L.marker(
+                [42.29524857, -71.07108773],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_9409370438a24a7caa0a8c71e09050bc = L.marker(
+                [42.29540175, -71.08237834],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_241a5aa3e2404ed7a3550ad6d635ae80 = L.marker(
+                [42.32991249, -71.07875908],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_57df3d13daa342539055618a5b3e492c = L.marker(
+                [-1.0, -1.0],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_9a37b7c1a29b4cc8ae5670a6ad551175 = L.marker(
+                [42.31341383, -71.07789593],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_0b4f43c15d404c9f8a12657d9bdc66cb = L.marker(
+                [42.30175853, -71.0746298],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_dc737ee2733c48ae9065628734b7d71f = L.marker(
+                [42.26414947, -71.10088891],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_6f8085f63b7049bdab2b6f43d68839ce = L.marker(
+                [42.32105956, -71.07313291],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_add823812eec43099dde14b54dfb6f39 = L.marker(
+                [42.28956988, -71.08510501],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_2791660001f24d279a3836ce0a1d69ee = L.marker(
+                [42.27373936, -71.10108024],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_346f7c3c1030402981bd00d78e852729 = L.marker(
+                [42.32576899, -71.07245871],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_cead530c61d94d118bb9ce7e6f0339f7 = L.marker(
+                [42.30664081, -71.08584976],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_e4d420a2e3f440e19bebbd5fad7c7be4 = L.marker(
+                [42.30328747, -71.06363409],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_f6cc0a2b7cfc43acb70475fd41aea4f8 = L.marker(
+                [42.30422176, -71.07918459],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_ce58940167a74b33916fedf2aa72ba5b = L.marker(
+                [42.25022843, -71.11831536],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_dca77c13d66b4e7880b5f54c4c322cc6 = L.marker(
+                [42.32653564, -71.06665971],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_163d6a2729fc43e38dbee8e9279caa8b = L.marker(
+                [42.30664081, -71.08584976],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_721c259032cf4124af08041f99f2d8da = L.marker(
+                [42.29480297, -71.06175129],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_d7357d2f9b244213b7c6f41ffcc7e6dd = L.marker(
+                [42.31370136, -71.09551192],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_78b1336da8ec4fae8046b488dd869459 = L.marker(
+                [42.32909775, -71.07906694],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_65b51389b1dd45d4a7d461d8a83085a0 = L.marker(
+                [42.32283759, -71.10096723],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_f9ab69cafca4471ebfa42bf60ac3a9ad = L.marker(
+                [42.31154172, -71.06122543],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_24f36de37a404344bee8144bd81b40f3 = L.marker(
+                [42.2901783, -71.05937392],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_faa095968f0c427a89bb0c8c981c4b49 = L.marker(
+                [42.29926303, -71.07626513],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_ac064148bcaf4f1da2ec30a33cc3397e = L.marker(
+                [42.32015414, -71.11119859],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_abb3dfc330ef4c98b958a6f3fb6c135b = L.marker(
+                [42.30010597, -71.0710271],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_d6aceb77300f40059b88c218638c2126 = L.marker(
+                [42.31814836, -71.06708346],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_07dcf05e86454e0183ee0b8d75c9ad36 = L.marker(
+                [42.37442697, -71.03527876],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_258ba14d8e5a4de8a5fe3f575c18df9b = L.marker(
+                [42.29779501, -71.07384157],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_7f714bc66cbc4b648fa1eec1b930df80 = L.marker(
+                [42.35238871, -71.06260312],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_5232590a63a64241b5a5a740dbf02929 = L.marker(
+                [42.31319382, -71.06500833],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_1951f34c9e1a416295ffb46eb5f94da0 = L.marker(
+                [42.27807456, -71.08254983],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_8c44ba72d91440019b3a70d1c16779d6 = L.marker(
+                [42.27913841, -71.0879709],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_3185af7a42cc4a39ae944d73e48e66a3 = L.marker(
+                [42.37679597, -71.03789722],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_22fc5ea545ac438eac2e29b6e93cd9ad = L.marker(
+                [42.28374569, -71.09153583],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_38e6a739d3f6424ba8e7ff2371badc7e = L.marker(
+                [42.30775024, -71.08273084],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_3fe65e0526a34159bbd69a7fefa31da9 = L.marker(
+                [42.29955614, -71.08073767],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_339109c486fa40f08b56444d658a7222 = L.marker(
+                [42.30812619, -71.07692974],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_342f3f1d310c45339ef0b6bca4f63e23 = L.marker(
+                [42.29000873, -71.07580876],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_2b28056aa8434121a420b2ff0c4129f6 = L.marker(
+                [42.282011499999996, -71.05891534],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_fc63c41f8a8e4d89ac100147ad91e12a = L.marker(
+                [42.30336787, -71.06827221],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_fcc1fb6c52d243ee9949ebcab7bb8d37 = L.marker(
+                [42.27133005, -71.08299865],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_6f46708e93ec4cb488692dec97b7b4ed = L.marker(
+                [42.38492212, -71.0174635],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_8d0f68eb99bf44848c95e16e0fd0c207 = L.marker(
+                [42.31788029, -71.0862988],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_c2f26a841e71419bab22a557237394a9 = L.marker(
+                [42.30956305, -71.08990197],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_f173a2e9582d423ab73a11d89059135b = L.marker(
+                [42.32545165, -71.08677983],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_c3e3a17d524e439e9c217b9e7375e046 = L.marker(
+                [42.28581121, -71.07115483],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_8b0de1aaa2a04697a46728c075210931 = L.marker(
+                [42.33511654, -71.10767674],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_1010fdbb7f244605a12b44616243fb0b = L.marker(
+                [42.38196242, -71.0318446],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_2ae7876cf8a84abab7135f92863eb51a = L.marker(
+                [42.27796370000001, -71.09246318],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_fcafa59d57b94937a53245f0fb66e802 = L.marker(
+                [42.33506218, -71.09316781],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_4593b575ee134037b9f430f8c3ef8fd1 = L.marker(
+                [42.28965721, -71.07728118],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_96f41990374447e9ae67d0c637f9219d = L.marker(
+                [42.34092585, -71.07730561],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_b74c347ad88149aab5693e003a7848e6 = L.marker(
+                [42.29540175, -71.08237834],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_a0c48a0489584e42894efd30a42e5ff4 = L.marker(
+                [42.32557398, -71.0524813],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_183089acd15847f1afa8dc8104df8da7 = L.marker(
+                [42.34583312, -71.09845531],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_8dad18ed05a947a0998a72bd52daaa25 = L.marker(
+                [42.32246336, -71.10757917],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_54c67c86cf394523b42b22f409b5091a = L.marker(
+                [42.28995318, -71.06076101],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_126a0def5dc14948a6ff39adc6ee51b8 = L.marker(
+                [42.2656321, -71.11051694],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_8eb30a139d2c4475a985f2f17a7bf08e = L.marker(
+                [42.36227866, -71.13742722],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_538bf3005ac44be99b5110ccb46fa4c6 = L.marker(
+                [42.26169686, -71.11387342],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_d95671c39bd041f79795d38f0feb8872 = L.marker(
+                [42.31049939, -71.07733579],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_3ddfbb9a7f94426ea44256b4eccf43b9 = L.marker(
+                [42.37887838, -71.03643423],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_18dc801ff01b43f99c99a9b64182c12b = L.marker(
+                [42.33421, -71.104919],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_898aed35cc19488490d2c415963e2fdc = L.marker(
+                [42.31632131, -71.0892305],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_45bccb4b1e234cd5b5d25bedff5133dc = L.marker(
+                [42.31195475, -71.07871912],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_813c3b64786248aebe76a4d1306a231e = L.marker(
+                [42.31832089, -71.09934809999999],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_918ce5a0ec9747688fd31c35a39860cc = L.marker(
+                [42.28079658, -71.09039724],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_121b4e54c8fa4ec28de52f4a74bb8f41 = L.marker(
+                [42.30505376, -71.08403633],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_5366a4abeb0d4d9f92b977d9d0b6f2ed = L.marker(
+                [42.29396688, -71.11893964],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_b8534da052724e148a46f62d09c56b8c = L.marker(
+                [42.28466568, -71.06602188],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_c2c141f39bbc47cfa237b9c5bc9dde53 = L.marker(
+                [42.31624019, -71.11267011],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_ba92842628524f01934499710af5b2f3 = L.marker(
+                [42.35251737, -71.06112927],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_ae04b8841c2347e8a1fa7902dc6fe16d = L.marker(
+                [42.31512218, -71.0825202],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_a48c7674717446fab0f4ca67448e398f = L.marker(
+                [42.32696802, -71.08051941],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+    
+            var marker_d2e73d5298e64f4ba13f6938ce9c5274 = L.marker(
+                [42.25592648, -71.12317207],
+                {"clusteredMarker": true}
+            ).addTo(marker_cluster_31b058f32eff4fb5bb2e66b5fcd2bf62);
+        
+</script>
+
+<!-- scripts -->
+
+</body>
+</html>
